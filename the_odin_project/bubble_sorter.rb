@@ -20,6 +20,31 @@ Now create a similar method called #bubble_sort_by which sorts an array by accep
 #   end
 # end
 
+# Merge Sorter (Recursion)
+
+def merge_sort(array)
+  if array.length <= 1
+    array
+  else
+    mid = (array.length / 2)
+    left = merge_sort(array[0..mid - 1])
+    right = merge_sort(array[mid..array.length])
+  end
+end
+
+def merge(left, right)
+  if left.empty?
+    right
+  elsif right.empty?
+    left
+  elsif left.first < right.first
+    [left.first] + merge(left[1..left.length], right)
+  else
+    [right.first] + merge(right[1..right.length], left)
+end
+
+### Bubble Sorter #1
+
 def bubble_sort(arr)
   (arr.length-2).times do
     (arr.length-1).times do |x|
